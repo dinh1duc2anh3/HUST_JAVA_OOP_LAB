@@ -1,0 +1,21 @@
+Reading Assignment: So sánh Abstract class vs Interface
+
+- so sánh abstract class (AC) với interface (I)
+giống	
+	-Cả abstract class và interface không thể tạo đối tượng trực tiếp.
+	- Cả hai đều có thể chứa các phương thức trừu tượng (phương thức không có thân hàm), buộc các lớp con phải triển khai.
+khác
+	- AC sử dung từ khóa khai báo là abstract và triển khai là extends còn I sử dung từ khóa khai báo interface còn triển khai là implements
+	- AC thì cần có ít nhất 1 phương thức abstract , có thể chứa các phương thức instance còn I thì chỉ có thể chứa danh sách các phương thức
+	- AC có thể chứa phương thức protected và static còn I chỉ có thể chứa các phương thức public và ko có mã nguồn
+	- AC có thể chứ các thuộc tính final và non-final trong khi I chỉ có thể chứa thuộc tính hang
+	- AC chỉ có thể kế thừa một lớp abstract còn I có thể kế thừa nhiều giao diện 
+	- AC có thể giúp tang tái sử dung code, trong khi I thì không
+khi nào nên dung cái nào
+	-abstract class: Sử dụng khi cần xây dựng một lớp cha chung cho các lớp con với một số phương thức có sẵn và một số phương thức cần được triển khai lại. 
+	- interface: Sử dụng khi cần thiết lập một nhóm hành vi chung mà các lớp có thể tuân theo
+
+-Giải thích tại sao Interface có thể giải quyết vấn đề đa kế thừa trong Java
+	-khi kế thừa từ nhiều lớp cha, các lớp cha có thể có các method cùng tên, cùng chữ ký, lúc đó java sẽ ko bt đc nên ưu tiên cái nào, gây lỗi
+	-1 lớp có thể triển khai nhiều interface do nó chỉ chứa các khai báo method, ko có thân hàm, do vậy nên hỗ trợ đa kế thừa 
+	

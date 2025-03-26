@@ -1,0 +1,43 @@
+1. What class should implement the Comparable interface?
+
+The Media class should implement the Comparable interface because we want to define a default ordering for all media items.
+
+2. In the compareTo() method of the Media class, you would compare first by title, then by cost
+
+public int compareTo(Media other) {
+    // Compare by title
+    int titleComparison = this.title.compareTo(other.title);
+    if (titleComparison != 0) {
+        return titleComparison;
+    }
+    
+    // If titles are the same, compare by cost
+    return Float.compare(this.cost, other.cost);
+}
+
+3.Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+
+No, the Comparable interface defines only one default ordering. To have multiple sorting rules, you'd need to use a Comparator for alternative orderings.
+
+4. Suppose the DVDs have a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+
+public int compareTo(Media other) {
+    if (this instanceof DVD && other instanceof DVD) {
+        DVD dvd1 = (DVD) this;
+        DVD dvd2 = (DVD) other;
+        // Compare by title
+        int titleComparison = this.title.compareTo(other.title);
+        if (titleComparison != 0) {
+            return titleComparison;
+        }
+        // Compare by decreasing length
+        int lengthComparison = Integer.compare(dvd2.getLength(), dvd1.getLength());
+        if (lengthComparison != 0) {
+            return lengthComparison;
+        }
+        // Compare by cost
+        return Float.compare(this.cost, other.cost);
+    }
+    // Default behavior
+    return super.compareTo(other);
+}
